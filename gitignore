@@ -1,0 +1,23 @@
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Jupyter and Databricks notebooks
+.ipynb_checkpoints/
+*.dbc
+
+# Environment files
+.env
+
+# Data and output folders
+data/
+output/
+
+# OS generated files
+.DS_Store
+Thumbs.db
+
+# Python virtual environments
+venv/
+.env/
