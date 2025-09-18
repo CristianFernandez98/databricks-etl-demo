@@ -22,6 +22,14 @@ spark.catalog.setCurrentDatabase(database)
 
 # COMMAND ----------
 
+# MAGIC %sql
+# MAGIC CREATE CATALOG IF NOT EXISTS family_support;
+# MAGIC CREATE SCHEMA IF NOT EXISTS family_support.bronze;
+# MAGIC CREATE SCHEMA IF NOT EXISTS family_support.silver;
+# MAGIC CREATE SCHEMA IF NOT EXISTS family_support.gold;
+
+# COMMAND ----------
+
 # MAGIC %run ../lib/utils_notebook
 
 # COMMAND ----------

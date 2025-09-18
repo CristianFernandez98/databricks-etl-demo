@@ -27,6 +27,10 @@ def read_file_to_DF(file_path, format="csv", delimiter=",", schema=None, header=
     except Exception as e:
         print(f"Error reading file: {e}")
         return None
+    
+#Function to create a table from DataFrame
+def create_table(df, table_name, mode="overwrite"):
+    df.write.mode(mode).saveAsTable(table_name)
 
 
 ## Data Cleaning
@@ -75,4 +79,7 @@ def count_unique_values(df, column):
 
 def sort_by_column(df,column,ascending=True):
     return df.sort(column,ascending=ascending)
+
+def inserted_rows(table_name):
+    return spark.table(table_name).count()
 
