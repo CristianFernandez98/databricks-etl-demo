@@ -25,19 +25,20 @@ The ETL process follows the Medallion Architecture:
 ## 📂 Project Structure
 ```
 databricks-etl-demo/
-├── notebooks/
-│   ├── 01_ingest_bronze.ipynb
-│   ├── 02_transform_silver.ipynb
-│   └── 03_aggregate_gold.ipynb
-├── lib/
-│   ├── utils.py              # Reusable functions (e.g., reading, writing, validations)
-│   └── config_loader.py      # Loading parameters, routes, configurations
+├── conf/
+│   ├── core_config.ini
 ├── data/
-│   └── sample_data.csv       # Input data for testing
-├── output/
-│   ├── bronze/               # Data transformed into Bronze layer
-│   ├── silver/               # Clean data in Silver layer
-│   └── gold/                 # Final tables in Gold layer
+│   └── caregivers
+│   └── children
+│   └── results
+├── lib/
+│   ├── utils_notebook        # Reusable functions (e.g., reading, writing, validations)
+│   └── config_loader.py      # Loading parameters, routes, configurations
+├── notebooks/
+│   ├── bronze/caregivers_notebook
+│   ├── silver/caregivers_notebook
+│   └── gold/gold_tables_definition
+│   └── data_pipeline_orchestrator
 ├── tests/
 │   └── test_utils.py         # Unit tests for lib/ functions
 ├── README.md
@@ -46,9 +47,10 @@ databricks-etl-demo/
 ```
 
 ## 📈 Usage
-- Run the Bronze notebook to ingest raw data.
-- Run the Silver notebook to clean and transform.
-- Run the Gold notebook to create final tables.
+- Run the data_pipeline_orchestrator notebook which executes the following:
+  - Run the Bronze notebooks to ingest raw data.
+  - Run the Silver notebooks to clean and transform.
+  - Run the Gold notebook to create final tables.
 
 ## 👤 Author
 **Cristian Fernández Nieto**  
