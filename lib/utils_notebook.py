@@ -46,9 +46,9 @@ def remove_duplicates(df, columns=None):
 
 ## Transformations
 
-def convert_data_types(df,schema):
-    for column, data_type in schema.items():
-        df = df.withColumn(column, col(column).cast(data_type))
+def convert_data_types(df, schema: StructType):
+    for field in schema.fields:
+        df = df.withColumn(field.name, col(field.name).cast(field.dataType))
     return df
 
 def normalize_column_names(df):
