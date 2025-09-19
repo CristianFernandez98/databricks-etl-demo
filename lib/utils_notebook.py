@@ -2,6 +2,7 @@
 from pyspark.sql import SparkSession
 import re
 from pyspark.sql.functions import *
+from pyspark.sql.types import *
 
 def get_spark_session(env):
     if env == "LOCAL":
@@ -53,7 +54,7 @@ def convert_data_types(df, schema: StructType):
 
 def normalize_column_names(df):
     for column in df.columns:
-        df = df.withColumnRenamed(column, column.replace(" ", "_").replace("-", "").lower())
+        df = df.withColumnRenamed(column, column.replace(" ", "_").replace("-", "_").lower())
     return df
 
 def rename_columns(df,old_value, new_value):
@@ -71,9 +72,9 @@ def standardize_gender(gender):
         return "Female"
     else:
         return "Unknown"
+udf_standardize_gender = udf(standardize_gender, StringType())
 
 ## Analysis
-
 def count_unique_values(df, column):
     return df.groupBy(column).count()
 

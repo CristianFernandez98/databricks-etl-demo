@@ -24,8 +24,13 @@ caregiver_data_path = "dbfs:/databricks-datasets/learning-spark-v2/people/people
 #Read and normalize column names
 caregiver_df = read_file_to_DF(caregiver_data_path,'csv',':')
 caregiver_df = normalize_column_names(caregiver_df)
+#Rename columns to standarize them in snake case
+caregiver_df = rename_columns(caregiver_df,'firstname','first_name')
+caregiver_df = rename_columns(caregiver_df,'middlename','middle_name')
+caregiver_df = rename_columns(caregiver_df,'lastname','last_name')
+caregiver_df = rename_columns(caregiver_df,'birthDate','birthdate')
 #Create the raw_caregiver table and insert the data
-create_table(caregiver_df,'raw_caregiver')
+create_table(caregiver_df,'raw_caregivers')
 #Count and print inserted rows
-rows_inserted = inserted_rows('raw_caregiver')
+rows_inserted = inserted_rows('raw_caregivers')
 print(f"rows inserted:{rows_inserted}")

@@ -53,3 +53,8 @@ df_spark.printSchema()
 #display(df_spark)
 # dbfs:/databricks-datasets/learning-spark-v2/people/people-with-header-10m.txt
 # dbfs:/databricks-datasets/learning-spark-v2/sf-fire/sf-fire-calls.csv
+
+# COMMAND ----------
+
+# MAGIC %sql
+# MAGIC SELECT * FROM family_support.silver.cleaned_caregivers
